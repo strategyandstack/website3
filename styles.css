@@ -1,0 +1,138 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+:root {
+    --glass-white: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #000;
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Background Ambient Glow */
+.mesh-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: #000;
+}
+
+.mesh-gradient {
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    filter: blur(80px);
+}
+
+/* Glassmorphism */
+.glass-card {
+    background: var(--glass-white);
+    backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+    border: 1px solid var(--glass-border);
+    transition: border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    letter-spacing: -0.04em;
+    font-weight: 900;
+}
+
+/* Custom Buttons */
+.btn-primary {
+    background: #fff;
+    color: #000;
+    padding: 1.5rem 3.5rem;
+    border-radius: 1.5rem;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px -10px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px -10px rgba(255, 255, 255, 0.4);
+    background: #f0f0f0;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1.5rem 3.5rem;
+    border-radius: 1.5rem;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    backdrop-filter: blur(10px);
+    transition: all 0.5s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Roadmap line dots */
+#next-steps-container::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+    #next-steps-container::before {
+        display: none;
+    }
+}
+
+/* Details/Accordion reset */
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Smooth Transitions */
+a, button {
+    cursor: pointer;
+}
+
+::selection {
+    background: #fff;
+    color: #000;
+}
